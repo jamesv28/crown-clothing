@@ -1,6 +1,6 @@
 import './App.css';
 
-import HomepageComponent from './homepage.component';
+import HomepageComponent from './pages/homepag/homepage.component';
 function App() {
   return (
     <div>
