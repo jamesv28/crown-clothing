@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FormInput from '../form-input/form-input.component';
+import Button from '../button/button.component';
 
 import './sign-in.styles.scss';
 
@@ -52,7 +53,7 @@ class SignInComponent extends Component {
                         handleChange={this.handleChange}
                         required 
                     />
-                    <button type="submit">Submit Form</button>
+                    <Button type="submit">Sign In</Button>
                 </form>
             </div>
         )
