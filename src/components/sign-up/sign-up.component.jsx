@@ -101,7 +101,7 @@ class SignUpComponent extends React.Component {
                         required
                         label="Confirm Password"
                     />
-                    <Button type="submit">Sign Up</Button>
+                    <Button type="submit" disabled={displayName.length && email.length && password.length && confirmPassword.length >= 1 ? false : true}>Sign Up</Button>
                 </form>
             </div>
         )

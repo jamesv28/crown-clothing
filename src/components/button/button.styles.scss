@@ -19,6 +19,13 @@
       border: 1px solid black;
     }
 
+    &:disabled {
+      background-color: #ccc;
+      color: white;
+      border: none;
+      cursor: not-allowed;
+    }
+
     &.google-sign-in {
       background-color: #4285e4;
       color: white;

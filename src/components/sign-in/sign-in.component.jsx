@@ -68,7 +68,7 @@ class SignInComponent extends Component {
                         required 
                     />
                     <div className="buttons">
-                        <Button type="submit">Sign In</Button>
+                        <Button disabled={email.length && password.length >= 1 ? false : true} type="submit">Sign In</Button>
                         <Button type="button" onClick={signInWithGoogle} isGoogleSignIn>Sign in with Google</Button>
                     </div>
                 </form>
