@@ -6,7 +6,7 @@ import {auth} from '../../firebase/firebase.utils';
 import './header.styles.scss';
 
 const Header = ({currentUser}) => (
-    <div className="header">
+    <nav className="header">
         <Link to="/" className="logo-container">
             <Logo className="logo" />
         </Link>
@@ -19,6 +19,11 @@ const Header = ({currentUser}) => (
             <Link to="/shop" className="option">
                 <strong>
                     Contact
+                </strong>
+            </Link>
+            <Link to="/about" className="option">
+                <strong>
+                    About
                 </strong>
             </Link>
             {
@@ -36,7 +41,7 @@ const Header = ({currentUser}) => (
                 </Link>
             }
         </div>
-    </div>
+    </nav>
 )
 
 export default Header;

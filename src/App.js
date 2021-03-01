@@ -7,6 +7,7 @@ import HomepageComponent from './pages/homepag/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import {createUserProfileDocument, auth} from './firebase/firebase.utils';
+import AboutPage from './pages/about/about.page';
 
 class App extends Component  {
   constructor() {
@@ -45,11 +46,14 @@ class App extends Component  {
     return (
       <div>
         <Header currentUser={this.state.currentUser} />
-        <Switch>
-          <Route exact path="/signin" component={SignInAndSignUpPage} />
-          <Route exact path="/" component={HomepageComponent} />  
-          <Route exact path="/shop" component={ShopPage} />
-        </Switch>
+        <main>
+          <Switch>
+            <Route exact path="/signin" component={SignInAndSignUpPage} />
+            <Route exact path="/" component={HomepageComponent} />  
+            <Route exact path="/shop" component={ShopPage} />
+            <Route exact path='/about' component={AboutPage} />
+          </Switch>
+        </main>
       </div>
     );
   }
