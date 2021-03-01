@@ -3,6 +3,7 @@ import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
 import {signInWithGoogle} from '../../firebase/firebase.utils';
 import {auth} from '../../firebase/firebase.utils';
+import Strings from '../../language/strings';
 
 import './sign-in.styles.scss';
 
@@ -43,10 +44,17 @@ class SignInComponent extends Component {
     }
 
     render() {
+        const {
+            already_have_account,
+            _email,
+            _password,
+            sign_in,
+            sign_in_google
+        } = Strings;
         const {email, password} = this.state;
         return (
             <div className="sign-in">
-                <h2 className="title">I already have an account.</h2>
+                <h2 className="title">{already_have_account}</h2>
                 <span>Sign in with your email and password</span>
 
                 <form onSubmit={this.handleSubmit}>
@@ -55,7 +63,7 @@ class SignInComponent extends Component {
                         type="email"
                         value={email}
                         required
-                        label="Email"
+                        label={_email}
                         handleChange={this.handleChange}
                     />
                     
@@ -63,13 +71,13 @@ class SignInComponent extends Component {
                         name="password" 
                         type="password" 
                         value={password} 
-                        label="Password"
+                        label={_password}
                         handleChange={this.handleChange}
                         required 
                     />
                     <div className="buttons">
-                        <Button disabled={email.length && password.length >= 1 ? false : true} type="submit">Sign In</Button>
-                        <Button type="button" onClick={signInWithGoogle} isGoogleSignIn>Sign in with Google</Button>
+                        <Button disabled={email.length && password.length >= 1 ? false : true} type="submit">{sign_in}</Button>
+                        <Button type="button" onClick={signInWithGoogle} isGoogleSignIn>{sign_in_google}</Button>
                     </div>
                 </form>
             </div>
