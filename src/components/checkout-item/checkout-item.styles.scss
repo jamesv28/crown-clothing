@@ -27,6 +27,15 @@
   
       .arrow {
         cursor: pointer;
+        border: none;
+        background-color: white;
+
+        &:focus {
+          outline: none;
+        }
+        &:active {
+          outline: none;
+        }
       }
   
       .value {

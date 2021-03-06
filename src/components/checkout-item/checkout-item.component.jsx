@@ -1,10 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {clearItemFromCart} from '.././../redux/cart/cart.actions';
+import { addItemToCart } from '../../redux/cart/cart.utils';
+import {clearItemFromCart, addItem, removeItem} from '.././../redux/cart/cart.actions';
 
 import './checkout-item.styles.scss';
 
-const CheckoutItem = ({cartItem, clearItem}) => {
+const CheckoutItem = ({cartItem, clearItem, addItem, removeItem}) => {
     const {name, imageUrl, quantity, price} = cartItem
     return(
         <div className="checkout-item">
@@ -12,7 +13,25 @@ const CheckoutItem = ({cartItem, clearItem}) => {
                 <img src={imageUrl} alt='item' />
             </div>
             <span className="name">{name}</span>
-            <span className="quantity">{quantity}</span>
+            <span className="quantity">
+                <button 
+                    className="arrow" 
+                    aria-label="Decrease" 
+                    role="button"
+                    onClick={() => removeItem(cartItem)}
+                >
+                    &#10094;
+                </button>
+                <div className="value">{quantity} </div>
+                <button 
+                    className="arrow" 
+                    aria-label="Increase" 
+                    role="button"
+                    onClick={() => addItem(cartItem)}
+                >
+                    &#10095;
+                </button>
+            </span>
             <span className="price">{price}</span>
             <div className="remove-button" onClick={() => clearItem(cartItem)}>
                 &#10006;
@@ -22,6 +41,8 @@ const CheckoutItem = ({cartItem, clearItem}) => {
 }
 
 const mapDispatchFromProps = dispatch => ({
-    clearItem: item => dispatch(clearItemFromCart(item))
+    clearItem: item => dispatch(clearItemFromCart(item)),
+    addItem: item => dispatch(addItem(item)),
+    removeItem: item => dispatch(removeItem(item))
 })
 export default connect(null, mapDispatchFromProps)(CheckoutItem);
