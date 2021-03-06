@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { addItemToCart } from '../../redux/cart/cart.utils';
 import {clearItemFromCart, addItem, removeItem} from '.././../redux/cart/cart.actions';
 
 import './checkout-item.styles.scss';
@@ -17,7 +16,6 @@ const CheckoutItem = ({cartItem, clearItem, addItem, removeItem}) => {
                 <button 
                     className="arrow" 
                     aria-label="Decrease" 
-                    role="button"
                     onClick={() => removeItem(cartItem)}
                 >
                     &#10094;
@@ -26,7 +24,6 @@ const CheckoutItem = ({cartItem, clearItem, addItem, removeItem}) => {
                 <button 
                     className="arrow" 
                     aria-label="Increase" 
-                    role="button"
                     onClick={() => addItem(cartItem)}
                 >
                     &#10095;
