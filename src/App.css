@@ -1,6 +1,7 @@
 html, body {
     font-family: 'Fira Sans Condensed', sans-serif;
     padding: 10px 60px;
+    background-color: #f3f3f3;
 }
 
 a {

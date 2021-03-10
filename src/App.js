@@ -14,6 +14,7 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import {createUserProfileDocument, auth} from './firebase/firebase.utils';
 import AboutPage from './pages/about/about.page';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import NotFoundComponent from './components/not-found/not-found.component';
 
 class App extends Component  {
   
@@ -53,6 +54,7 @@ class App extends Component  {
             <Route path="/shop" component={ShopPage} />
             <Route exact path='/checkout' component={CheckoutPage} />
             <Route exact path='/about' component={AboutPage} />
+            <Route path="*" component={NotFoundComponent} />
           </Switch>
         </main>
       </div>
