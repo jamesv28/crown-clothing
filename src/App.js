@@ -3,7 +3,8 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/user/user.actions';
 import {createStructuredSelector} from 'reselect';
-import './App.css';
+// import './App.css';
+import {GlobalStyles} from './global.styles';
 
 import Header from './components/header/header.component';
 import HomepageComponent from './pages/homepag/homepage.component';
@@ -46,6 +47,7 @@ class App extends Component  {
   render() {
     return (
       <div>
+        <GlobalStyles />
         <Header />
         <main>
           <Switch>
