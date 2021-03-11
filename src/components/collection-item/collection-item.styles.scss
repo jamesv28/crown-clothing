@@ -48,3 +48,19 @@
       }
     }
 }
+
+@media screen and (max-width: 800px) {
+  .collection-item {
+    width: 40%;
+
+    &:hover {
+      .image {
+        opacity: unset;
+      }
+      .custom-button {
+        opacity: unset;
+        display: flex;
+      }
+    }
+  }
+}

@@ -66,4 +66,16 @@
       }
     }
   }
+
+  @media screen and (max-width: 800px) {
+    .menu-item {
+      height: 200px;
+      min-width: 100%;
+      margin: 2px !important;
+    }
+    
+    .large {
+      height: 200px !important;
+    }
+  }
   

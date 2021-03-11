@@ -39,11 +39,6 @@ const googleSignInStyles = css`
       }
 `;
 
-// const getButtonStyles = props => {
-//     if(props.isGoogleSignIn) return googleSignInStyles;
-//     return props.inverted ? invertedButtonStyles : buttonStyles
-// }
-
 export const CustomButtonContainer = styled.button`
     min-width: 125px;
     width: auto;
