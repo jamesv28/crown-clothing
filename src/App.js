@@ -3,7 +3,6 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {setCurrentUser} from './redux/user/user.actions';
 import {createStructuredSelector} from 'reselect';
-// import './App.css';
 import {GlobalStyles} from './global.styles';
 
 import Header from './components/header/header.component';
@@ -66,8 +65,7 @@ class App extends Component  {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser
-});
-
+})
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
