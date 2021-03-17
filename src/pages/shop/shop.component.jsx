@@ -3,14 +3,13 @@ import {Route} from 'react-router-dom';
 import {createStructuredSelector} from 'reselect';
 
 import CollectionPage from '../collection/collection.page';
-import CollectionOverview from '../../components/collections-overview/collections-overview.component';
 import WithSpinner from '../../components/with-spinner/with-spinner.component';
 import {selectionIsCollectionFetching} from '../../redux/shop/shop.selectors';
 
 import {fetchCollectionsAsync} from '../../redux/shop/shop.actions';
 import {connect} from 'react-redux';
+import collectionOverviewContainer from '../../components/collections-overview/collection-overview.container';
 
-const CollectionOverwithWithSpinner = WithSpinner(CollectionOverview);
 const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 class ShopPage extends Component{
@@ -28,12 +27,17 @@ class ShopPage extends Component{
     }
 
     render() {
-        const {isCollectionFetching, match} = this.props;
+        const { isCollectionFetching, match} = this.props;
         return (
             <div className="shop-page">
                 <Route 
-                    exact path={`${match.path}`} render={props => <CollectionOverwithWithSpinner isLoading={isCollectionFetching} {...props} /> }/>
-                <Route path={`${match.path}/:collectionId`}  render={props => <CollectionPageWithSpinner isLoading={isCollectionFetching} {...props} />} />
+                    exact 
+                    path={`${match.path}`} 
+                    component={collectionOverviewContainer}
+                />
+                <Route 
+                    path={`${match.path}/:collectionId`}  
+                    render={props => <CollectionPageWithSpinner isLoading={isCollectionFetching} {...props} />} />
             </div>
         )
     }
