@@ -29,3 +29,8 @@ export const fetchCollectionsAsync = () => {
              .catch(err => dispatch(fetchCollectionsFailure(err)));
     }
 }
+
+export const updateCollections = collectionsMap => ({
+    type: ShopActionTypes.FETCH_COLLECTIONS_START,
+    payload: collectionsMap
+});

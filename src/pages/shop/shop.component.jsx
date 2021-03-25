@@ -5,8 +5,12 @@ import {createStructuredSelector} from 'reselect';
 import CollectionPage from '../collection/collection.page';
 import WithSpinner from '../../components/with-spinner/with-spinner.component';
 import {selectionIsCollectionFetching} from '../../redux/shop/shop.selectors';
+import {
+    firestore,
+    convertCollectionSnapshotToMap
+  } from '../../firebase/firebase.utils.js';
 
-import {fetchCollectionsStart} from '../../redux/shop/shop.actions';
+import {updateCollections} from '../../redux/shop/shop.actions';
 import {connect} from 'react-redux';
 import collectionOverviewContainer from '../../components/collections-overview/collection-overview.container';
 
@@ -16,9 +20,19 @@ class ShopPage extends Component{
 
     unsubscribeFromSnapshot = null;
 
+    state = {
+        isLoading: true
+    }
+
     componentDidMount() {
-        const {fetchCollectionsStart} = this.props;
-        fetchCollectionsStart();
+        const {updateCollections} = this.props;
+        const collectionRef = firestore.collection('collections');
+
+        collectionRef.get().then(snapshot => {
+            const collectionsMap = convertCollectionSnapshotToMap(snapshot);
+            updateCollections(collectionsMap);
+            this.setState({ isLoading: false });
+        });
     }
     
 
@@ -27,7 +41,8 @@ class ShopPage extends Component{
     }
 
     render() {
-        const { isCollectionFetching, match} = this.props;
+        const { match} = this.props;
+        const {isLoading} = this.state;
         return (
             <div className="shop-page">
                 <Route 
@@ -37,7 +52,7 @@ class ShopPage extends Component{
                 />
                 <Route 
                     path={`${match.path}/:collectionId`}  
-                    render={props => <CollectionPageWithSpinner isLoading={isCollectionFetching} {...props} />} />
+                    render={props => <CollectionPageWithSpinner isLoading={isLoading} {...props} />} />
             </div>
         )
     }
@@ -47,7 +62,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
+    updateCollections: (collectionsMap) => dispatch(updateCollections(collectionsMap))
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(ShopPage);
