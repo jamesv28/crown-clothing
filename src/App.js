@@ -11,7 +11,6 @@ import ShopPage from './pages/shop/shop.component';
 import CheckoutPage from './pages/checkout/checkout.page';
 
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import {createUserProfileDocument, auth} from './firebase/firebase.utils';
 import AboutPage from './pages/about/about.page';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import NotFoundComponent from './components/not-found/not-found.component';
@@ -20,10 +19,6 @@ class App extends Component  {
   
   unsubscribeFromAuth = null;
 
-  componentDidMount() {
-    const {setCurrentUser} = this.props;
-
-  }
 
   componentWillUnmount() {
     this.unsubscribeFromAuth();
