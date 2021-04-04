@@ -32,8 +32,7 @@ class SignInComponent extends Component {
             password
         } = this.state;
         emailSignInStart(email,password);
-        
-        
+            
     }
 
     render() {
